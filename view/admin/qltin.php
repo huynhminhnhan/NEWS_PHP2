@@ -152,93 +152,42 @@ if (isset($_POST['submit'])) {
                                 <a  href="">Thêm tin mới</a>
                             </div>
                             <table>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Tiêu đề</th>
-                                  
-                                    <th>Số lượt xem</th>
-                                    <th>Danh mục</th>
+                               <tr>
+                                   <th>Ảnh</th>
+                                   <th>Tiêu đề</th>
                                  
-                                    <th>Sửa,Xóa</th>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/5-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 1</td>
-                                    
-                                    <td>50</td>
+                                   <th>Số lượt xem</th>
+                                   <th>Danh mục</th>
+                                
+                                   <th>Sửa,Xóa</th>
+                               </tr>
+                                           
+                                <?php
+                               $news = new News();
+                               $dssp = $news->getAllListPage();
+
+                               foreach ($dssp as $kq) {
                                   
-                                    <td>Out Of Stock</td>
-                                    
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/6-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 2</td>
-                                    
-                                    <td>60</td>
-                                  
-                                    <td>In Stock</td>
-                                   
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/7-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 3</td>
-                                    
-                                    <td>70</td>
-                                  
-                                    <td>Low Stock</td>
-                                    
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/5-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 4</td>
-                                   
-                                    <td>120</td>
-                                   
-                                    <td>In Stock</td>
-                                   
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/6-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 5</td>
-                                    
-                                    <td>30</td>
-                                   
-                                    <td>Out Of Stock</td>
-                                    
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/new-product/7-small.jpg" alt="" /></td>
-                                    <td>Jewelery Title 6</td>
-                                   
-                                    <td>400</td>
-                                  
-                                    <td>In Stock</td>
-                                   
-                                    <td>
-                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    </td>
-                                </tr>
+                                   extract($kq);
+                                   $new_path = "../view/upload/".$kq['Hinh'];
+                                   if(is_file($new_path)){
+                                     $new_path= '<img src='.$new_path.' width="100px"/>';
+                                   }else{
+                                     $new_path="no data";
+                                   }
+                                   echo ' <tr>
+                                   <td>'.$new_path.'</td>
+                                   <td>'.$kq['TieuDe'].'</td>
+                                 
+                                   <td><i class="fa fa-eye" aria-hidden="true">'.$kq['SoLuotXem'].'</i></td>
+                                   <td></td>
+                                
+                                   <td>Sửa,Xóa</td>
+                               </tr>';
+                                }
+                                ?>  
+
+                               
                             </table>
                             <div class="custom-pagination">
                                 <nav aria-label="Page navigation example">

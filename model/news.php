@@ -24,6 +24,13 @@ class news {
         }
      }
 
+     public function getAllListPage() {
+      $db = new connect();
+      $select = "SELECT * FROM tintuc ORDER BY id DESC";
+      $result = $db->getList($select);
+      return $result;
+    }
+    
   public function getListPage($form,$to) {
     $db = new connect();
     $select = "SELECT * FROM tintuc ORDER BY id DESC LIMIT $form ,$to";
