@@ -34,9 +34,14 @@ if (isset($_POST['submit'])) {
     $id_category        = $_POST['select'];
     $news = new news($title,$date_created,$seen,$excu,$decs,$images,$special,$id_category);
     $news->insert();
-    
+   
 }
-
+if(isset($_GET['delete'])) {
+    $news = new news();
+    $id = $_GET['id'];
+      $news->deleteNews($id);  
+      
+   }
 ?>
   <div class="single-product-tab-area mg-tb-15">
             <!-- Single pro tab review Start-->
@@ -164,8 +169,11 @@ if (isset($_POST['submit'])) {
                                            
                                 <?php
                                $news = new News();
+                              
                                $dssp = $news->getAllListPage();
-
+                               
+                              
+                                                     
                                foreach ($dssp as $kq) {
                                   
                                    extract($kq);
@@ -182,8 +190,9 @@ if (isset($_POST['submit'])) {
                                    <td><i class="fa fa-eye" aria-hidden="true">'.$kq['SoLuotXem'].'</i></td>
                                    <td></td>
                                 
-                                   <td>Sửa,Xóa</td>
+                                   <td><a href="?atc=qltin&id='.$kq['id'].'&delete">Xóa</a></td>
                                </tr>';
+                               
                                 }
                                 ?>  
 

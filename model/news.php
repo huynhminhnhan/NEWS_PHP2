@@ -59,6 +59,11 @@ $result = $db->getList($query);
     
    
 }
+function deleteNews($id) {
+  $db = new connect();
+  $query = "DELETE FROM tintuc WHERE id = $id";
+  $db->execute($query);
+}
 
 }
 
