@@ -59,6 +59,17 @@ $result = $db->getList($query);
     
    
 }
+function getAllById($id) {
+  $db = new connect();
+  $query = "select *  FROM tintuc WHERE id = $id";
+  $result = $db->getInstancse($query);
+  return $result;
+}
+function upDateNews($id) {
+  $db = new connect();
+  $query = "UPDATE tintuc SET TieuDe=?,TomTat=?,NoiDung=?,Hinh=?,NoiBat=?,SoLuotXem=?,date_created=?,idLoaiTin=?  WHERE id = $id";
+  $db->execute($query);
+}
 function deleteNews($id) {
   $db = new connect();
   $query = "DELETE FROM tintuc WHERE id = $id";

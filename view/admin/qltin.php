@@ -42,6 +42,51 @@ if(isset($_GET['delete'])) {
       $news->deleteNews($id);  
       
    }
+   if(isset($_GET['edit'])) {
+    $news = new news();
+    $id = $_GET['id'];
+    $news->UpdateNews($id);  
+      
+
+   }
+   if(isset($_GET['update']) && $_GET['edit']) {
+    $title      = $_POST['title'];
+   
+    $date_created       = $_POST['date_creat'];
+    $seen       = $_POST['seen'];
+    $excu     = $_POST['except'];
+    $decs    = $_POST['decs'];
+    $images       = $_FILES['hinh']['name'];
+          if(!empty($images)) {
+            $tmp = $_FILES['hinh']['tmp_name'];
+            $images  = time().$images; // noi ten anh 
+            $new_path = "../view/upload/".$images;
+      
+            if (!move_uploaded_file($tmp,$new_path)) {
+              $error = " upload that bai ";
+            }
+            else {
+              move_uploaded_file($tmp,$new_path);
+            }
+          }
+          else {
+           $error = " Anh khong duoc de trong ";
+          }
+    $special      = "";
+    if (isset($_POST['speci'])) {
+        $special = 1;
+    }
+    else {
+        $special = 0;
+    }
+    $id_category        = $_POST['select'];
+    echo $id,$title,$date_created,$seen,$excu,$decs,$images,$special,$id_category;
+    $id = $_GET['id'];
+    $news = new news($id,$title,$date_created,$seen,$excu,$decs,$images,$special,$id_category);
+    $news->UpdateNews();  
+      
+
+   }
 ?>
   <div class="single-product-tab-area mg-tb-15">
             <!-- Single pro tab review Start-->
@@ -59,11 +104,114 @@ if(isset($_GET['delete'])) {
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                 
                                     <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <form action="?atc=qltin" method="post" enctype="multipart/form-data">
+                                    <?php 
+                                                   if (isset($_GET['edit']) && $_GET['id']) { 
+                                                       $news = new news;
+                                                       $id = $_GET['id'];
+                                                       $infor = $news->getAllById($id);
+                                                       extract($infor);
+                                                        //var_dump($infor)
+                                                       ?>
+
+                                                    <form action="?atc=qltin" method="post" enctype="multipart/form-data">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="review-content-section">
+                                                              
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                                                    <input type="text" name="title" value="<?php echo $infor['TieuDe'] ?>" class="form-control" placeholder="Tiêu đề edit">
+                                                                </div>
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                                    <input type="text" name="decs" value="<?php echo $infor['NoiDung'] ?>" class="form-control" placeholder="Noi dung">
+                                                                </div>
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                                    <input type="text" name="except" value="<?php echo $infor['TomTat'] ?>" class="form-control" placeholder="Tóm tắt">
+                                                                </div>
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                                                    <input type="text" name="date_creat" value="<?php echo $infor['date_created'] ?>" class="form-control" id="datepicker" placeholder="Ngày đăng">
+                                                                    <script>
+              $( function() {
+                $( "#datepicker" ).datepicker();
+              } );
+              </script>
+                                                                </div>
+                                                               
+                                                                </div>  
+                                                        </div>
+            
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="review-content-section">
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                                                    <input value="<?php echo $infor['Hinh'] ?>" type="file" name="hinh"  class="form-control">
+                                                                </div>
+            
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-ticket" aria-hidden="true">Nổi bật</i></span>
+                                                                    <?php 
+                                                                    $checked = $infor['NoiBat'];
+                                                                    if($checked =1) {
+                                                                        echo '<input value=""  type="checkbox"  name="speci" class="form-control" placeholder="Nổi bật" checked >';
+                                                                    }
+                                                                        else {
+                                                                            echo '<input value=""  type="checkbox"  name="speci" class="form-control" placeholder="Nổi bật"  /> ';
+                                                                        }
+                                                                    ?>
+                                                                    
+                                                                    
+                                                                </div>
+                                                                
+                                                                <div class="input-group mg-b-pro-edt">
+                                                                    <span class="input-group-addon"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                                                    <input value="<?php echo $infor['SoLuotXem'] ?>" type="text" name="seen" class="form-control" placeholder="Số lượt xem">
+                                                                </div>
+                                                              
+                                                                
+                                                                <select name="select"   class="form-control pro-edt-select form-control-primary">
+                                                                    <?php
+                                                                    $list_catlog = new Catalog();
+                                                                    $dslist = $list_catlog->getList();
+                                                                    
+                                                                    foreach ($dslist as $dslist) {
+                                                                        extract($dslist);
+                                                                      
+            
+                                                                    echo '<option value="'.$dslist['id'].'">'.$dslist['Ten'].'</option>';
+                                                                    }
+                                                                    ?>
+                                                                        
+                                                                    </select>
+                                                                   
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        
+                                                    </div>
+            
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
+                                                                <button type="submit" name="update" class="btn btn-primary waves-effect waves-light m-r-10">Save Edit
+                                                                    </button>
+                                                                <button type="button" class="btn btn-warning waves-effect waves-light">Discard
+                                                                    </button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                </form>
+                                                  <?php } else {?>
+                                                    <form action="?atc=qltin" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-                                                   
+                                                  
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                                         <input type="text" name="title" class="form-control" placeholder="Tiêu đề">
@@ -143,6 +291,9 @@ if(isset($_GET['delete'])) {
                                         
                                     </div>
                                     </form>
+                                                 
+                                   
+                                      <?php } ?>
                                     <div class="product-tab-list tab-pane fade" id="reviews">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -162,9 +313,9 @@ if(isset($_GET['delete'])) {
                                    <th>Tiêu đề</th>
                                  
                                    <th>Số lượt xem</th>
-                                   <th>Danh mục</th>
+                                   <th>Sửa</th>
                                 
-                                   <th>Sửa,Xóa</th>
+                                   <th>Xóa</th>
                                </tr>
                                            
                                 <?php
@@ -188,7 +339,7 @@ if(isset($_GET['delete'])) {
                                    <td>'.$kq['TieuDe'].'</td>
                                  
                                    <td><i class="fa fa-eye" aria-hidden="true">'.$kq['SoLuotXem'].'</i></td>
-                                   <td></td>
+                                   <td><a href="?atc=qltin&id='.$kq['id'].'&edit&#description">Sửa</a></td>
                                 
                                    <td><a href="?atc=qltin&id='.$kq['id'].'&delete">Xóa</a></td>
                                </tr>';
