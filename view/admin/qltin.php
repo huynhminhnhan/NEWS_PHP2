@@ -53,7 +53,7 @@ if(isset($_GET['delete'])) {
     $title      = $_POST['title'];
    
     $date_created       = $_POST['date_creat'];
-    $seen       = $_POST['seen'];
+    $seen       = $_POST['seenn'];
     $excu     = $_POST['except'];
     $decs    = $_POST['decs'];
     $images       = $_FILES['hinh']['name'];
