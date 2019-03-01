@@ -1,6 +1,6 @@
 <?php 
 include "header.php";
-
+$id = $_GET['id'];
 if (isset($_POST['submit'])) {
     $title      = $_POST['title'];
    
@@ -42,14 +42,8 @@ if(isset($_GET['delete'])) {
       $news->deleteNews($id);  
       
    }
-   if(isset($_GET['edit'])) {
-    $news = new news();
-    $id = $_GET['id'];
-    $news->UpdateNews($id);  
-      
-
-   }
-   if(isset($_GET['update']) && $_GET['edit']) {
+   
+   if(isset($_POST['update'])) {
     $title      = $_POST['title'];
    
     $date_created       = $_POST['date_creat'];
@@ -80,6 +74,10 @@ if(isset($_GET['delete'])) {
         $special = 0;
     }
     $id_category        = $_POST['select'];
+
+    $news = new news();
+    
+   $news->UpdateNews($title,$excu,$decs,$images,$special,$seen,$date_created,$id_category,$id);  
    
    }
 ?>
@@ -102,13 +100,12 @@ if(isset($_GET['delete'])) {
                                     <?php 
                                                    if (isset($_GET['edit']) && $_GET['id']) { 
                                                        $news = new news;
-                                                       $id = $_GET['id'];
                                                        $infor = $news->getAllById($id);
                                                        extract($infor);
                                                         //var_dump($infor)
                                                        ?>
 
-                                                    <form action="?atc=qltin" method="post" enctype="multipart/form-data">
+                                                    <form action="" method="post" enctype="multipart/form-data">
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="review-content-section">

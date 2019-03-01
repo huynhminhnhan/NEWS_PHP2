@@ -65,10 +65,11 @@ function getAllById($id) {
   $result = $db->getInstancse($query);
   return $result;
 }
-function upDateNews($id) {
+function upDateNews($title,$excu,$decs,$images,$special,$seen,$date_created,$id_category,$id) {
   $db = new connect();
-  $query = "UPDATE tintuc SET TieuDe=?,TomTat=?,NoiDung=?,Hinh=?,NoiBat=?,SoLuotXem=?,date_created=?,idLoaiTin=?  WHERE id = $id";
-  $db->execute($query);
+  $query = "UPDATE tintuc SET TieuDe='$title' ,TomTat='$excu',NoiDung='$decs',Hinh='$images',NoiBat=$special,SoLuotXem=$seen,date_created='$date_created',idLoaiTin=$id_category  WHERE id =$id";
+  //echo $query;
+ $db->execute($query);
 }
 function deleteNews($id) {
   $db = new connect();

@@ -53,12 +53,12 @@ class Catalog {
         $db->execute($query);
     }
      //Update sản phẩm
-//     function Editproduct($tensanpham,$image,$price,$mota,$mathang,$brand,$id)
-//     {
-//         $db = new connect();
-//         $query = "UPDATE products set ProductName='$tensanpham',ProductImage='$image',ProductPrice='$price',ProductDesc='$mota',ProductCategory= '$mathang', ProductBrand='$brand' where ProductID='$id'";
-//         $db->exec($query);
-//     }
+    function EditCat($ten,$TenKhongDau,$id)
+    {
+        $db = new connect();
+        $query = "UPDATE loaitin set Ten='$ten',TenKhongDau='$TenKhongDau' where id='$id'";
+        $db->execute($query);
+    }
      //Xoá sản phẩm
 //     function Deleteproduct($id)
 //         {
