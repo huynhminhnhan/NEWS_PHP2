@@ -60,10 +60,16 @@
     <link rel="stylesheet" href="assets-admin/css/responsive.css">
     <!-- modernizr JS
         ============================================ -->
+        <link rel="stylesheet" href="assets-admin/css/responsive.css">
+    <!-- editor
+        ============================================ -->
+        <link rel="stylesheet" href="assets-admin/dist/summernote-lite.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   
+        
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="assets-admin/dist/summernote-lite.js"></script>
     <script src="assets-admin/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 

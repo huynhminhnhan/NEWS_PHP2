@@ -12,9 +12,12 @@ switch ($action) {
     case "archive";
         include "../view/home/archive.php";
     break;
-    
+    case "single-post";
+        include "../view/home/single-post.php";
+        break;
     default:
         include "../view/home/home.php";
     break;
+
 }
 ?>

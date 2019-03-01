@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $id_category        = $_POST['select'];
     $news = new news($title,$date_created,$seen,$excu,$decs,$images,$special,$id_category);
     $news->insert();
-   
+  // var_dump($news);
 }
 if(isset($_GET['delete'])) {
     $news = new news();
@@ -80,12 +80,7 @@ if(isset($_GET['delete'])) {
         $special = 0;
     }
     $id_category        = $_POST['select'];
-    echo $id,$title,$date_created,$seen,$excu,$decs,$images,$special,$id_category;
-    $id = $_GET['id'];
-    $news = new news($id,$title,$date_created,$seen,$excu,$decs,$images,$special,$id_category);
-    $news->UpdateNews();  
-      
-
+   
    }
 ?>
   <div class="single-product-tab-area mg-tb-15">
@@ -122,13 +117,14 @@ if(isset($_GET['delete'])) {
                                                                     <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                                                     <input type="text" name="title" value="<?php echo $infor['TieuDe'] ?>" class="form-control" placeholder="Tiêu đề edit">
                                                                 </div>
+                                                               
                                                                 <div class="input-group mg-b-pro-edt">
-                                                                    <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                                    <input type="text" name="decs" value="<?php echo $infor['NoiDung'] ?>" class="form-control" placeholder="Noi dung">
-                                                                </div>
-                                                                <div class="input-group mg-b-pro-edt">
-                                                                    <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                                    <input type="text" name="except" value="<?php echo $infor['TomTat'] ?>" class="form-control" placeholder="Tóm tắt">
+                                                                    <span class="input-group-addon"><i class="fa fa-pencil"  aria-hidden="true"></i></span>
+                                                                    <textarea name="except" id=""  class="form-control" cols="30" rows="10">
+
+                                                                    <?php echo $infor['TomTat'];?>
+                                                                    </textarea>
+                                                                   
                                                                 </div>
                                                                 <div class="input-group mg-b-pro-edt">
                                                                     <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
@@ -185,13 +181,18 @@ if(isset($_GET['delete'])) {
                                                                     ?>
                                                                         
                                                                     </select>
-                                                                   
+                                                                  
                                                             </div>
                                                             
                                                         </div>
                                                         
                                                     </div>
-            
+                                                    <div class="row">
+                                                 
+                                                 <textarea name="decs" id="summernote" cols="30" rows="10">
+                                                 <?php echo $infor['NoiDung'] ?>
+                                                 </textarea>
+                                                 </div>                        
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
@@ -216,10 +217,7 @@ if(isset($_GET['delete'])) {
                                                         <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                                         <input type="text" name="title" class="form-control" placeholder="Tiêu đề">
                                                     </div>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                                        <input type="text" name="decs" class="form-control" placeholder="Noi dung">
-                                                    </div>
+                                                  
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                                                         <input type="text" name="except" class="form-control" placeholder="Tóm tắt">
@@ -276,10 +274,15 @@ if(isset($_GET['delete'])) {
                                             </div>
                                             
                                         </div>
-
-                                        <div class="row">
+                                                   <div class="row">
+                                                 
+                                                   <textarea name="decs" id="summernote" cols="30" rows="10">
+                                                  
+                                                   </textarea>
+                                                   </div>     
+                                        <div class="row mt-3">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
+                                                <div class="text-center mt-4 custom-pro-edt-ds" style="margin-top:30px;">
                                                     <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light m-r-10">Save
 														</button>
                                                     <button type="button" class="btn btn-warning waves-effect waves-light">Discard
@@ -385,7 +388,15 @@ if(isset($_GET['delete'])) {
                 </div>
             </div>
         </div>
+        <script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 400
+      });
+    </script>
 <?php 
+
 include "footer.php";
 
 ?>
