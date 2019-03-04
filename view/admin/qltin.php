@@ -1,6 +1,6 @@
 <?php 
 include "header.php";
-$id = $_GET['id'];
+
 if (isset($_POST['submit'])) {
     $title      = $_POST['title'];
    
@@ -76,7 +76,7 @@ if(isset($_GET['delete'])) {
     $id_category        = $_POST['select'];
 
     $news = new news();
-    
+    $id = $_GET['id'];
    $news->UpdateNews($title,$excu,$decs,$images,$special,$seen,$date_created,$id_category,$id);  
    
    }
@@ -173,7 +173,7 @@ if(isset($_GET['delete'])) {
                                                                         extract($dslist);
                                                                       
             
-                                                                    echo '<option value="'.$dslist['id'].'">'.$dslist['Ten'].'</option>';
+                                                                    echo '<option value="'.$dslist['idLoaiTin'].'">'.$dslist['Ten'].'</option>';
                                                                     }
                                                                     ?>
                                                                         
@@ -260,7 +260,7 @@ if(isset($_GET['delete'])) {
                                                             extract($dslist);
                                                           
 
-                                                        echo '<option value="'.$dslist['id'].'">'.$dslist['Ten'].'</option>';
+                                                        echo '<option value="'.$dslist['idLoaiTin'].'">'.$dslist['Ten'].'</option>';
                                                         }
                                                         ?>
 															

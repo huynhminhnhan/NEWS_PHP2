@@ -6,6 +6,7 @@
                     <div class="tab-content">
                     <?php
 $news = new News();
+
 $dssp = $news->getNewsSpecialFirst(1);
 
 foreach ($dssp as $kq) {
@@ -26,16 +27,16 @@ foreach ($dssp as $kq) {
         <!-- Post Content -->
         <div class="post-content">
             <a href="#" class="post-cata">Sports</a>
-            <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+            <a href="?atc=single-post&id='.$kq['id'].'&idLoaiTin='.$kq['idLoaiTin'].'" class="post-title">'.$kq['TieuDe'].'</a>
             <div class="post-meta d-flex">
                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+             
+              
             </div>
         </div>
 
         <!-- Video Duration -->
-        <span class="video-duration">20</span>
+        <span class="video-duration"><i class="fa fa-eye" aria-hidden="true"> '.$kq['SoLuotXem'].' </i></span>
     </div>
 </div>';
 }
@@ -47,7 +48,7 @@ foreach ($dssp as $kq) {
                     <ul class="nav vizew-nav-tab" role="tablist">
                     <?php
 
-$dssp = $news->getNewsSpecial(3);
+$dssp = $news->getNewsSpecial(0,5);
 
 foreach ($dssp as $kq) {
    
@@ -60,7 +61,7 @@ foreach ($dssp as $kq) {
     }
 echo '
 <li class="nav-item">
-    <a class="nav-link active" id="post-1-tab" data-toggle="pill" href="#post-1" role="tab" aria-controls="post-1" aria-selected="true">
+    <a class="nav-link active" href="?atc=single-post&id='.$kq['id'].'&idLoaiTin='.$kq['idLoaiTin'].'">
         <!-- Single Blog Post -->
         <div class="single-blog-post style-2 d-flex align-items-center">
             <div class="post-thumbnail">
@@ -70,8 +71,8 @@ echo '
                 <h6 class="post-title">'.$kq['TieuDe'].'</h6>
                 <div class="post-meta d-flex justify-content-between">
                     <span><i class="fa fa-comments-o" aria-hidden="true"></i> 25</span>
-                    <span><i class="fa fa-eye" aria-hidden="true"></i> 11</span>
-                    <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 19</span>
+                    <span><i class="fa fa-eye" aria-hidden="true"></i> '.$kq['SoLuotXem'].' </span>
+                   
                 </div>
             </div>
         </div>
@@ -95,83 +96,50 @@ echo '
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading">
-                        <h4>Tin nổi bật</h4>
+                        <h4>ĐANG ĐƯỢC QUAN TÂM</h4>
                         <div class="line"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <!-- Single Blog Post -->
-                <div class="col-12 col-md-4">
+                <?php 
+                $dssp = $news->getSee();
+
+                foreach ($dssp as $kq) {
+                    
+                    extract($kq);
+                    $new_path = "../view/upload/".$kq['Hinh'];
+                    if(is_file($new_path)){
+                      $new_path=$new_path;
+                    }else{
+                      $new_path="no data";
+                    }
+
+                    echo ' <div class="col-12 col-md-4">
                     <div class="single-post-area mb-80">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                            <img src="assets/img/bg-img/11.jpg" alt="">
-
+                            <img src="'.$new_path.'" alt="" style="height:220px!important;width:100%;">
                             <!-- Video Duration -->
-                            <span class="video-duration">20</span>
+                            <span class="video-duration">'.$kq['SoLuotXem'].'</span>
                         </div>
 
                         <!-- Post Content -->
                         <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                            <a href="single-post.html" class="post-title">Warner Bros. Developing ‘The accountant’ Sequel</a>
+                            <a href="#" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
+                            <a href="single-post.html" class="post-title">'.$kq['TieuDe'].'</a>
                             <div class="post-meta d-flex">
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
+                              '.$kq['TomTat'].'
                             </div>
                         </div>
                     </div>
                 </div>
-
+';
+                    }
+                ?>
                 <!-- Single Blog Post -->
-                <div class="col-12 col-md-4">
-                    <div class="single-post-area mb-80">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="assets/img/bg-img/12.jpg" alt="">
-
-                            <!-- Video Duration -->
-                            <span class="video-duration">20</span>
-                        </div>
-
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                            <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
-                            <div class="post-meta d-flex">
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="col-12 col-md-4">
-                    <div class="single-post-area mb-80">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="assets/img/bg-img/13.jpg" alt="">
-
-                            <!-- Video Duration -->
-                            <span class="video-duration">20</span>
-                        </div>
-
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                            <a href="single-post.html" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
-                            <div class="post-meta d-flex">
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
         </div>

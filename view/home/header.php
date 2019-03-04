@@ -105,10 +105,10 @@
                                 <li class="active"><a href="?home"> Trang chủ</a></li>
                                 <?php
                                      $cate = new Catalog();
-                                     $dsdm=$cate->getListPage(0,5);
+                                     $dsdm=$cate->getListPage(0,4);
                                      foreach ($dsdm as $set) {
                                         extract($set);
-                                        $idcate=$set['id'];
+                                        $idcate=$set['idLoaiTin'];
                                         $name=$set['Ten'];
                                       
                                         echo '   <li class=""><a href="?atc=archive&idcate='.$idcate.'">'.$name.'</a></li>';

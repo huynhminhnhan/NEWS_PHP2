@@ -251,6 +251,9 @@ input:focus {
   .section-heading h4 {
     font-weight: 700;
     margin-bottom: 10px; }
+  .vizew-nav-tab .nav-item {
+      border-bottom: 2px solid #db4437;
+    }
     @media only screen and (max-width: 767px) {
       .section-heading h4 {
         font-size: 20px; } }

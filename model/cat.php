@@ -33,7 +33,7 @@ class Catalog {
      
      public function getListPage($form,$to) {
         $db = new connect();
-        $select = "SELECT * FROM loaitin ORDER BY id DESC LIMIT $form ,$to";
+        $select = "SELECT * FROM loaitin ORDER BY idLoaiTin DESC LIMIT $form ,$to";
         $result = $db->getList($select);
         return $result;
       }
@@ -42,7 +42,7 @@ class Catalog {
      function getCateById($id)
      {
          $db = new connect();
-         $select = "select * from loaitin where id=$id";
+         $select = "select * from loaitin where idLoaiTin=$id";
          $result=$db->getInstancse($select);
          return $result;
      }
@@ -56,7 +56,7 @@ class Catalog {
     function EditCat($ten,$TenKhongDau,$id)
     {
         $db = new connect();
-        $query = "UPDATE loaitin set Ten='$ten',TenKhongDau='$TenKhongDau' where id='$id'";
+        $query = "UPDATE loaitin set Ten='$ten',TenKhongDau='$TenKhongDau' where idLoaiTin='$id'";
         $db->execute($query);
     }
      //Xoá sản phẩm

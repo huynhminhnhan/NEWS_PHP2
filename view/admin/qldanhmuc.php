@@ -150,7 +150,7 @@ if (isset($_POST['update'])) {
                                     
                                     
                                     <td>
-                                    <a href="?atc=qldanhmuc&id='.$dsdm['id'].'&edit"> <button data-toggle="tooltip" name="" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
+                                    <a href="?atc=qldanhmuc&id='.$dsdm['idLoaiTin'].'&edit"> <button data-toggle="tooltip" name="" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
                                        
                                     </td>
                                     <td>

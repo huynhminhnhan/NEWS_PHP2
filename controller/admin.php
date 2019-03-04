@@ -12,6 +12,7 @@ switch ($action) {
     case "qltin";
         include "../view/admin/qltin.php";
     break;
+   
     case "qldanhmuc";
     include "../view/admin/qldanhmuc.php";
 break;

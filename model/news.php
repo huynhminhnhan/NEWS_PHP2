@@ -38,12 +38,27 @@ class news {
     return $result;
   }
 
-  static function getNewsSpecial($top){
+  static function getNewsSpecial($form,$to){
     $db = new connect();
-    $query = "select * from tintuc where NoiBat = 1 ORDER BY id DESC limit $top";
+    $query = "select * from tintuc where NoiBat = 1 ORDER BY id DESC limit $form,$to";
 $result = $db->getList($query);
     return $result;
 }
+
+static function updateSee($id){
+  $db = new connect();
+  $query = "UPDATE tintuc SET soluotxem =soluotxem +1 WHERE id=$id";
+$result = $db->getList($query);
+  
+} 
+// cap nhat so lan xem tin
+static function getSee(){
+  $db = new connect();
+  $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE SoLuotXem ORDER BY id ASC limit 3";
+$result = $db->getList($query);
+return $result;
+} 
+// lay bai viet xem nhieu nhat
 static function getNewsSpecialFirst($top){
   $db = new connect();
   $query = "select * from tintuc where NoiBat = 1 ORDER BY id limit $top";
@@ -61,10 +76,13 @@ $result = $db->getList($query);
 }
 function getAllById($id) {
   $db = new connect();
-  $query = "select *  FROM tintuc WHERE id = $id";
-  $result = $db->getInstancse($query);
+  $query = "SELECT *  FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE id=$id ";
+  
+ $result = $db->getInstancse($query);
+ //print_r($result);
   return $result;
 }
+
 function upDateNews($title,$excu,$decs,$images,$special,$seen,$date_created,$id_category,$id) {
   $db = new connect();
   $query = "UPDATE tintuc SET TieuDe='$title' ,TomTat='$excu',NoiDung='$decs',Hinh='$images',NoiBat=$special,SoLuotXem=$seen,date_created='$date_created',idLoaiTin=$id_category  WHERE id =$id";

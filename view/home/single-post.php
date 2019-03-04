@@ -6,16 +6,21 @@ include "header.php" ;
 
 $news = new News();
 $id = $_GET['id'];
+//$id_category = $_GET['idLoaiTin'];
 $tin = $news->getAllById($id);
-
-extract($tin);
+//print_r($tin);
+//extract($tin);
 $hinh = "../view/upload/".$tin['Hinh'];
     if(is_file($hinh)){
       $hinh=$hinh;
     }else{
       $hinh="no data";
     }
+// updatesee
+
+ $news->updateSee($id);
 ?>
+
     <!-- ##### Header Area End ##### -->
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="vizew-breadcrumb">
@@ -25,7 +30,7 @@ $hinh = "../view/upload/".$tin['Hinh'];
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Archives</a></li>
+                            <li class="breadcrumb-item"><a href="#"><?php echo $tin['Ten'] ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo $tin['TieuDe'] ?></li>
                         </ol>
                     </nav>
