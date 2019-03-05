@@ -46,6 +46,7 @@ class Catalog {
          $result=$db->getInstancse($select);
          return $result;
      }
+     
     //Thêm danh muc mới
      function insert(){
         $db = new connect();

@@ -161,45 +161,39 @@ echo '
                         <!-- Featured Post Slides -->
                         <div class="featured-post-slides owl-carousel mb-30">
                             <!-- Single Feature Post -->
-                        
-                            <div class="single-feature-post video-post bg-img" style="background-image: url(assets/img/bg-img/14.jpg);">
-                                <!-- Play Button -->
-                                
+                        <?php 
+                        $dssp = $news->getNews(0,2);
 
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata">Sports</a>
-                                    <a href="single-post.html" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
-                                    </div>
-                                </div>
+                        foreach ($dssp as $kq) {
+                           
+                            extract($kq);
+                            $new_path = "../view/upload/".$kq['Hinh'];
+                            if(is_file($new_path)){
+                              $new_path=$new_path;
+                            }else{
+                              $new_path="no data";
+                            }
+                       echo '
+                       <!-- Single Feature Post -->
+                       <div class="single-feature-post video-post bg-img" style="background-image: url('.$new_path.');">
+                           <!-- Play Button -->
+                           
 
-                                <!-- Video Duration -->
-                                <span class="video-duration">20</span>
-                            </div>
+                           <!-- Post Content -->
+                           <div class="post-content">
+                               <a href="#" class="post-cata">'.$kq['Ten'].'</a>
+                               <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+                               <div class="post-meta d-flex">
+                                   <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+                                   <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> '.$kq['SoLuotXem'].'</a>
+                                  
+                               </div>
+                           </div>
 
-                            <!-- Single Feature Post -->
-                            <div class="single-feature-post video-post bg-img" style="background-image: url(assets/img/bg-img/7.jpg);">
-                                <!-- Play Button -->
-                                
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata">Sports</a>
-                                    <a href="single-post.html" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
-                                    </div>
-                                </div>
-
-                                <!-- Video Duration -->
-                                <span class="video-duration">20</span>
-                            </div>
+                
+                       </div>';
+                        }
+                        ?> 
                         </div>
 
                         <div class="row">
@@ -251,115 +245,129 @@ echo '
                                 </div>
                             </div>
                         </div>
-
+                        <?php 
+                        $news = new Catalog();
+                      
+                        //$id_category = $_GET['idLoaiTin'];
+                        $id = 30; // the thao 
+                        $tin = $news->getCateById($id);
+                      //  var_dump($tin);
+                       extract($tin);
+                       
+                        ?>
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <!-- Section Heading -->
                                 <div class="section-heading style-2">
-                                    <h4>Thể thao</h4>
+                                  <a href="?atc=archive&idcate=<?php echo $tin['idLoaiTin'] ?>">  <h4><?php echo $tin['Ten'] ?></h4></a>
                                     <div class="line"></div>
                                 </div>
 
                                 <!-- Sports Video Slides -->
                                 <div class="sport-video-slides owl-carousel mb-50">
                                     <!-- Single Blog Post -->
-                                    <div class="single-post-area">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="assets/img/bg-img/15.jpg" alt="">
+                                  <?php 
+                                    $news = new News();
+                                     //$id_category = $_GET['idLoaiTin'];
+                                    
+                                    $tin = $news->getNewsTheThao();
+                                   foreach ($tin as $kq) {
+                                        extract($kq);
+                    
+                                    $new_path = "../view/upload/".$kq['Hinh'];
+                                    if(is_file($new_path)){
+                                      $new_path=$new_path;
+                                    }else{
+                                      $new_path="no data";
+                                    }
+                                    echo ' <div class="single-post-area">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="'.$new_path.'" alt="">
 
-                                            <!-- Video Duration -->
-                                            <span class="video-duration">20</span>
-                                        </div>
+                                        <!-- Video Duration -->
+                                      
+                                    </div>
 
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
-                                            <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                            </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
+                                        <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+                                        <div class="post-meta d-flex">
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true">'.$kq['SoLuotXem'].'</i></a>
+                                         
                                         </div>
                                     </div>
+                                </div>';
+                                }
+                                  ?>
 
                                     <!-- Single Blog Post -->
-                                    <div class="single-post-area">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="assets/img/bg-img/13.jpg" alt="">
-
-                                            <!-- Video Duration -->
-                                            <span class="video-duration">20</span>
-                                        </div>
-
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                            <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
-                                            <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
 
                             <div class="col-12 col-lg-6">
                                 <!-- Section Heading -->
+                                <?php 
+                        $news = new Catalog();
+                      
+                        //$id_category = $_GET['idLoaiTin'];
+                        $id = 29; // dautu
+                        $tin = $news->getCateById($id);
+                      //  var_dump($tin);
+                       extract($tin);
+                       
+                        ?>
                                 <div class="section-heading style-2">
-                                    <h4>Đầu tư</h4>
+                                   <a href="?atc=archive&idcate=<?php echo $tin['idLoaiTin'] ?>"> <h4><?php echo $tin['Ten'] ?></h4></a>
                                     <div class="line"></div>
                                 </div>
 
                                 <!-- Business Video Slides -->
                                 <div class="business-video-slides owl-carousel mb-50">
                                     <!-- Single Blog Post -->
-                                    <div class="single-post-area">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="assets/img/bg-img/17.jpg" alt="">
+                                    <?php 
+                                    $news = new News();
+                                     //$id_category = $_GET['idLoaiTin'];
+                                    
+                                    $tin = $news->getNewsDauTu();
+                                   foreach ($tin as $kq) {
+                                        extract($kq);
+                    
+                                    $new_path = "../view/upload/".$kq['Hinh'];
+                                    if(is_file($new_path)){
+                                      $new_path=$new_path;
+                                    }else{
+                                      $new_path="no data";
+                                    }
+                                    echo ' <div class="single-post-area">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="'.$new_path.'" alt="">
 
-                                            <!-- Video Duration -->
-                                            <span class="video-duration">99</span>
-                                        </div>
+                                        <!-- Video Duration -->
+                                      
+                                    </div>
 
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="single-post.html" class="post-title">Full article Prince Charles's 'urgent' global research</a>
-                                            <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                            </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
+                                        <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+                                        <div class="post-meta d-flex">
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true">'.$kq['SoLuotXem'].'</i></a>
+                                         
                                         </div>
                                     </div>
+                                </div>';
+                                }
+                                  ?>
+                                    
 
                                     <!-- Single Blog Post -->
-                                    <div class="single-post-area">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="assets/img/bg-img/13.jpg" alt="">
-
-                                            <!-- Video Duration -->
-                                            <span class="video-duration">20</span>
-                                        </div>
-
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                            <a href="single-post.html" class="post-title">Full article Prince Charles's 'urgent' global research</a>
-                                            <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

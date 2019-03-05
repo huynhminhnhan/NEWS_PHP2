@@ -40,13 +40,22 @@
                         <!-- Breaking News Widget -->
                         <div class="breaking-news-area d-flex align-items-center">
                             <div class="news-title">
-                                <p>Breaking News:</p>
+                                <p>Tin nhanh </p>
                             </div>
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="single-post.html">10 Things Amazon Echo Can Do</a></li>
-                                    <li><a href="single-post.html">Welcome to Colorlib Family.</a></li>
-                                    <li><a href="single-post.html">Boys 'doing well' after Thai</a></li>
+                                <?php
+                                $news = new news();
+                                $dstin = $news->getAllListPageRand();
+
+                                        foreach ($dstin as $kq) {
+                                            extract($kq);
+                                            echo '<li><a href="?atc=single-post&id='.$kq['id'].'">'.$kq['TieuDe'].'</a></li>';
+                                            }
+
+                                ?>
+                                    
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -85,7 +94,7 @@
                     <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="assets/img/core-img/logo.png" alt=""></a>
+                        <a href="?atc" class="nav-brand"><img src="assets/img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">

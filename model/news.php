@@ -26,11 +26,18 @@ class news {
 
      public function getAllListPage() {
       $db = new connect();
-      $select = "SELECT * FROM tintuc ORDER BY id DESC";
+      $select = "SELECT * FROM tintuc ORDER BY id RAND()";
       $result = $db->getList($select);
       return $result;
     }
-    
+    public function getAllListPageRand() {
+      $db = new connect();
+      $select = " SELECT * FROM tintuc ORDER BY RAND(id)";
+      $result = $db->getList($select);
+      return $result;
+    }
+   
+
   public function getListPage($form,$to) {
     $db = new connect();
     $select = "SELECT * FROM tintuc ORDER BY id DESC LIMIT $form ,$to";
@@ -65,6 +72,40 @@ static function getNewsSpecialFirst($top){
 $result = $db->getList($query);
   return $result;
 }
+// lay bai viet moi nhat
+// get archive
+static function getNewsArchive($id){
+  $db = new connect();
+  $query = "select * from tintuc where idLoaiTin=$id";
+$result = $db->getList($query);
+  return $result;
+}
+
+static function getNews($form,$to){
+  $db = new connect();
+  $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idLoaiTin)  where NoiBat = 0 ORDER BY id DESC limit $form,$to";
+$result = $db->getList($query);
+  return $result;
+}
+
+// get danh muc the thao
+static function getNewsTheThao(){
+  $db = new connect();
+  $query = "SELECT * FROM tintuc INNER JOIN loaitin ON ( tintuc.idLoaiTin = loaitin.idLoaiTin) WHERE tintuc.idLoaiTin = 30";
+  
+$result = $db->getList($query);
+  return $result;
+}
+// get news dau tu 
+static function getNewsDauTu(){
+  $db = new connect();
+  $query = "SELECT * FROM tintuc INNER JOIN loaitin ON ( tintuc.idLoaiTin = loaitin.idLoaiTin) WHERE tintuc.idLoaiTin = 29";
+  
+$result = $db->getList($query);
+  return $result;
+}
+
+
   function insert(){
     $db = new connect();
     /* $query = "INSERT INTO tintuc(TieuDe,TieuDeKhongDau,TomTat,NoiDung,Hinh,NoiBat,SoLuotXem,date_created,idLoaiTin) VALUES('$this->title','$this->link_seo','$this->date_created','$this->excu','$this->seen','$this->decs','$this->images','$this->special','$this->id_category')"; */

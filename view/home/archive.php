@@ -43,435 +43,49 @@ include "header.php"
                     </div>
 
                     <div class="row">
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/12.jpg" alt="">
+                    <?php
+                    $archive = new news();
+                    $id = $_GET['idcate'];
+                    $inFor = $archive->getNewsArchive($id);
+                    foreach ($inFor as $kq) {
+                        extract($kq);
+                        $new_path = "../view/upload/".$kq['Hinh'];
+                                    if(is_file($new_path)){
+                                      $new_path=$new_path;
+                                    }else{
+                                      $new_path="no data";
+                                    }
+                        echo '<div class="col-12 col-md-6">
+                        <div class="single-post-area mb-50">
+                            <!-- Post Thumbnail -->
+                            <div class="post-thumbnail">
+                                <img src="'.$new_path.'" alt="">
 
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
+                                <!-- Video Duration -->
+                                <span class="video-duration">'.$kq['SoLuotXem'].'</span>
+                            </div>
 
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">May fights on after Johnson savages Brexit approach</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                               
+                                <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+                                <div class="post-meta d-flex">
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
+                                    
+                                  
                                 </div>
                             </div>
                         </div>
+                    </div>';
+                    }
+                    ?>
+                        <!-- Single Blog Post -->
+                       
 
                         <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/39.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Thailand cave rescue: Boys 'doing well' after spending night</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                       
                         <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/40.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Theresa May battles Brexitee backlash amid disquiet</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/41.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Theresa May battles Brexitee backlash amid disquiet</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/42.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/43.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Full article Prince Charles's 'urgent' global research</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/44.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/45.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Do This One Simple Action for an Absolutely</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/46.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Thailand cave rescue: Boys 'doing well' after spending night</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/47.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Theresa May battles Brexiteer backlash amid disquiet</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/48.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/49.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/40.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Warner Bros. Developing ‘The accountant’ Sequel</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/41.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/42.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/43.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Warner Bros. Developing ‘The accountant’ Sequel</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/44.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6">
-                            <div class="single-post-area mb-50">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/45.jpg" alt="">
-
-                                    <!-- Video Duration -->
-                                    <span class="video-duration">05.03</span>
-                                </div>
-
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                    <a href="single-post.html" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Pagination -->

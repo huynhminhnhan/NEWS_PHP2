@@ -34,8 +34,9 @@ if (isset($_POST['submit'])) {
     $id_category        = $_POST['select'];
     $news = new news($title,$date_created,$seen,$excu,$decs,$images,$special,$id_category);
     $news->insert();
-  // var_dump($news);
+ //var_dump($news);
 }
+
 if(isset($_GET['delete'])) {
     $news = new news();
     $id = $_GET['id'];
@@ -99,6 +100,7 @@ if(isset($_GET['delete'])) {
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                     <?php 
                                                    if (isset($_GET['edit']) && $_GET['id']) { 
+                                                    $id = $_GET['id'];
                                                        $news = new news;
                                                        $infor = $news->getAllById($id);
                                                        extract($infor);
