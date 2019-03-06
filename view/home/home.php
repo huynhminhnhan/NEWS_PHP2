@@ -26,7 +26,7 @@ foreach ($dssp as $kq) {
 
         <!-- Post Content -->
         <div class="post-content">
-            <a href="#" class="post-cata">Sports</a>
+           
             <a href="?atc=single-post&id='.$kq['id'].'&idLoaiTin='.$kq['idLoaiTin'].'" class="post-title">'.$kq['TieuDe'].'</a>
             <div class="post-meta d-flex">
                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
@@ -127,8 +127,8 @@ echo '
 
                         <!-- Post Content -->
                         <div class="post-content">
-                            <a href="#" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
-                            <a href="single-post.html" class="post-title">'.$kq['TieuDe'].'</a>
+                            <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
+                            <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
                             <div class="post-meta d-flex">
                               '.$kq['TomTat'].'
                             </div>
@@ -181,7 +181,7 @@ echo '
 
                            <!-- Post Content -->
                            <div class="post-content">
-                               <a href="#" class="post-cata">'.$kq['Ten'].'</a>
+                               <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata">'.$kq['Ten'].'</a>
                                <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
                                <div class="post-meta d-flex">
                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>

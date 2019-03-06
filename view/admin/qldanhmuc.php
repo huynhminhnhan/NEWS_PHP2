@@ -17,7 +17,7 @@ if (isset($_POST['update'])) {
     $id = $_GET['id'];
    
    $cat->EditCat($tieude_Cat,$TieuDeKhongDau,$id);
-     
+   
  
  }
 ?>
@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
                                       $dsdm =  $cat->getCateById($id);
                                         extract($dsdm);
                                         ?>
-                                        <form action="" method="post" enctype="multipart/form-data">
+                                        <form action="?submitForm" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="review-content-section">
@@ -142,10 +142,10 @@ if (isset($_POST['update'])) {
                                     extract($dsdm);
 
                                     echo '<tr>
-                                    <td><img src="img/new-product/5-small.jpg" alt="" /></td>
+                                    <td>'.$dsdm['idLoaiTin'].'</td>
                                     <td>'.$dsdm['Ten'].'</td>
                                     
-                                    <td>50</td>
+                                    <td>'.$dsdm['TenKhongDau'].'</td>
                                   
                                     
                                     

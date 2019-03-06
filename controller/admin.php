@@ -17,6 +17,7 @@ switch ($action) {
     include "../view/admin/qldanhmuc.php";
 break;
 
+
     /* case"add_news";
     $title      = $_POST['title'];
     $link_seo   = $_POST['link-seo'];

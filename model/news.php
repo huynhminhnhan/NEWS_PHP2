@@ -26,7 +26,7 @@ class news {
 
      public function getAllListPage() {
       $db = new connect();
-      $select = "SELECT * FROM tintuc ORDER BY id RAND()";
+      $select = "SELECT * FROM tintuc ORDER BY id DESC";
       $result = $db->getList($select);
       return $result;
     }
@@ -61,7 +61,7 @@ $result = $db->getList($query);
 // cap nhat so lan xem tin
 static function getSee(){
   $db = new connect();
-  $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE SoLuotXem ORDER BY id ASC limit 3";
+  $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE tintuc.SoLuotXem ORDER BY id DESC limit 3";
 $result = $db->getList($query);
 return $result;
 } 
