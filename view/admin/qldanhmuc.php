@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
                                       $dsdm =  $cat->getCateById($id);
                                         extract($dsdm);
                                         ?>
-                                        <form action="?submitForm" method="post" enctype="multipart/form-data">
+                                        <form action="" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="review-content-section">
