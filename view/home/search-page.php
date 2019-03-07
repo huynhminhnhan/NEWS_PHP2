@@ -75,7 +75,7 @@ foreach ($search_page as $kq) {
         <div class="col-12 col-md-6">
             <!-- Post Content -->
             <div class="post-content mt-0">
-                <a href="#" class="post-cata cata-sm cata-success">Sports</a>
+                <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata cata-sm cata-success">'.$kq['Ten'].'</a>
                 <a href="single-post.html" class="post-title mb-2">'.$kq['TieuDe'].'</a>
                 <div class="post-meta d-flex align-items-center mb-2">
                     <i class="fa fa-circle" aria-hidden="true"></i>
