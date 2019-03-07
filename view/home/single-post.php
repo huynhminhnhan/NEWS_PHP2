@@ -30,7 +30,7 @@ $hinh = "../view/upload/".$tin['Hinh'];
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#"><?php echo $tin['Ten'] ?></a></li>
+                            <li class="breadcrumb-item"><a href="?atc=archive&idcate='<?php echo $tin['idLoaiTin'] ?>'"><?php echo $tin['Ten'] ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?php echo $tin['TieuDe'] ?></li>
                         </ol>
                     </nav>
@@ -42,43 +42,70 @@ $hinh = "../view/upload/".$tin['Hinh'];
 
     <!-- ##### Pager Area Start ##### -->
     <div class="vizew-pager-area">
-        <div class="vizew-pager-prev">
-            <p>PREVIOUS ARTICLE</p>
+    <?php 
 
+$news = new News();
+$id = $_GET['id'];
+//$id_category = $_GET['idLoaiTin'];
+$tinNext = $news->getNewsNextPage($id);
+//print_r($tin);
+//extract($tinNext);
+$hinhNext = "../view/upload/".$tinNext['Hinh'];
+    if(is_file($hinhNext)){
+      $hinhNext=$hinhNext;
+    }else{
+      $hinhNext="no data";
+    }
+
+
+    $tinPrev = $news->getNewsPrevPage($id);
+//print_r($tinPrev);
+//extract($tinPrev);
+$HinhPrev = "../view/upload/".$tinPrev['Hinh'];
+    if(is_file($HinhPrev)){
+      $HinhPrev=$HinhPrev;
+    }else{
+      $HinhPrev="no data";
+    }
+    
+            ?>
+
+        <div class="vizew-pager-prev">
+            <p>Tin Trước</p>
             <!-- Single Feature Post -->
-            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(img/bg-img/15.jpg);">
+            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(<?php echo $HinhPrev; ?>);">
                 <!-- Post Content -->
                 <div class="post-content">
-                    <a href="#" class="post-cata cata-sm cata-success"><?php echo $tin['idLoaiTin'] ?></a>
-                    <a href="video-post.html" class="post-title"><?php echo $tin['TieuDe'] ?></a>
+                   
+                    <a href="<?php echo '?atc=single-post&id='.$tinPrev['id'].''?>" class="post-title"><?php echo $tinPrev['TieuDe'] ?></a>
                     <div class="post-meta d-flex">
                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> </a>
-                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $tin['SoLuotXem']?></a>
+                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $tinPrev['SoLuotXem']?></a>
                      
                     </div>
                 </div>
                 <!-- Video Duration -->
-                <span class="video-duration">11.13</span>
+              
             </div>
         </div>
 
         <div class="vizew-pager-next">
-            <p>NEXT ARTICLE</p>
-
+            <p>Tin Tiếp Theo</p>
+      
             <!-- Single Feature Post -->
-            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(img/bg-img/14.jpg);">
+            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(<?php echo $hinhNext; ?>);">
                 <!-- Post Content -->
                 <div class="post-content">
-                    <a href="#" class="post-cata cata-sm cata-business">Business</a>
-                    <a href="video-post.html" class="post-title"><?php echo $tin['TieuDe'] ?></a>
+                   
+                    <a href="<?php echo '?atc=single-post&id='.$tinNext['id'].''?>" class="post-title"><?php echo $tinNext['TieuDe'] ?></a>
                     <div class="post-meta d-flex">
                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $tin['SoLuotXem']?></a>
+                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?php echo $tinNext['SoLuotXem']?></a>
                        
                     </div>
                 </div>
                 <!-- Video Duration -->
-                <span class="video-duration">06.59</span>
+               
             </div>
         </div>
     </div>
@@ -90,7 +117,7 @@ $hinh = "../view/upload/".$tin['Hinh'];
             <div class="row">
                 <div class="col-12">
                     <div class="post-details-thumb mb-50">
-                        <img src="<?php echo $hinh ?>" width="100%" height="auto" alt="">
+                        <img src="<?php echo $hinh?>" width="100%" height="auto" alt="">
                     </div>
                 </div>
             </div>
@@ -179,7 +206,7 @@ echo $tin['NoiDung'];
                                                 <div class="post-meta d-flex">
                                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
                                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
+                                                    <a href="#"> 15</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,7 +230,7 @@ echo $tin['NoiDung'];
                                                 <div class="post-meta d-flex">
                                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
                                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
+                                                    <a href="#"> 22</a>
                                                 </div>
                                             </div>
                                         </div>

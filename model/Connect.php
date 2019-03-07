@@ -21,10 +21,17 @@ class connect {
         $result = $this->db->query($select);
         return $result;
     }
+
     // hàm lấy dữ liệu từ một bản
    public function getInstancse($select) {
     $results = $this->db->query($select);
                 $result = $results->fetch();
+                return $result;
+                
+   }
+   public function getmore($select) {
+    $results = $this->db->query($select);
+                $result = $results->fetch_assoc($select,0);
                 return $result;
                 
    }

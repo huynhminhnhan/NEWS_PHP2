@@ -149,7 +149,7 @@ if(isset($_GET['delete'])) {
                                                                     <span class="input-group-addon"><i class="fa fa-ticket" aria-hidden="true">Nổi bật</i></span>
                                                                     <?php 
                                                                     $checked = $infor['NoiBat'];
-                                                                    if($checked =1) {
+                                                                    if($checked ==1) {
                                                                         echo '<input value=""  type="checkbox"  name="speci" class="form-control" placeholder="Nổi bật" checked >';
                                                                     }
                                                                         else {

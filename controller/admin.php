@@ -16,7 +16,23 @@ switch ($action) {
     case "qldanhmuc";
     include "../view/admin/qldanhmuc.php";
 break;
+case "dmUpcate";
+$tieude_Cat = $_POST['title'];
+$TieuDeKhongDau = $_POST['link_seo'];
+$id = $_POST['id'];
+$cat = new Catalog();
 
+
+$cat->EditCat($tieude_Cat,$TieuDeKhongDau,$id);
+
+include "../view/admin/qldanhmuc.php";
+break;
+case "update_cate";
+$cat = new Catalog();
+$id = $_GET['id'];
+$dsdm =  $cat->getCateById($id);
+include "../view/admin/qldanhmuc.php";
+break;
 
     /* case"add_news";
     $title      = $_POST['title'];

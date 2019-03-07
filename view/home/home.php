@@ -48,7 +48,7 @@ foreach ($dssp as $kq) {
                     <ul class="nav vizew-nav-tab" role="tablist">
                     <?php
 
-$dssp = $news->getNewsSpecial(0,5);
+$dssp = $news->getNewsSpecial(1,4);
 
 foreach ($dssp as $kq) {
    
@@ -198,52 +198,46 @@ echo '
 
                         <div class="row">
                             <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6">
-                                <div class="single-post-area mb-80">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="assets/img/bg-img/12.jpg" alt="">
+                            <?php 
+                             $dssp = $news->getNews(3,2);
 
-                                        <!-- Video Duration -->
-                                        <span class="video-duration">20</span>
-                                    </div>
+                             foreach ($dssp as $kq) {
+                                
+                                 extract($kq);
+                                 $new_path = "../view/upload/".$kq['Hinh'];
+                                 if(is_file($new_path)){
+                                   $new_path=$new_path;
+                                 }else{
+                                   $new_path="no data";
+                                 }
+                            echo ' <div class="col-12 col-md-6">
+                            <div class="single-post-area mb-80">
+                                <!-- Post Thumbnail -->
+                                <div class="post-thumbnail">
+                                    <img src="'.$new_path.'" alt="">
 
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                        <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste Bridge</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                        </div>
+                                    <!-- Video Duration -->
+                                  
+                                </div>
+
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                <a href="?atc=archive&idcate='.$kq['idLoaiTin'].'" class="post-cata cata-sm cata-danger">'.$kq['Ten'].'</a>
+                                    <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
+                                    <div class="post-meta d-flex">
+                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
+                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> '.$kq['SoLuotXem'].' </a>
+                                        
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+';
+                             }
+                            ?>
+                           
                             <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6">
-                                <div class="single-post-area mb-80">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumbnail">
-                                        <img src="assets/img/bg-img/13.jpg" alt="">
-
-                                        <!-- Video Duration -->
-                                        <span class="video-duration">20</span>
-                                    </div>
-
-                                    <!-- Post Content -->
-                                    <div class="post-content">
-                                        <a href="#" class="post-cata cata-sm cata-primary">Business</a>
-                                        <a href="single-post.html" class="post-title">Love Island star's boyfriend found dead after her funeral</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         <?php 
                         $news = new Catalog();
@@ -384,7 +378,7 @@ echo '
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -401,7 +395,7 @@ echo '
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +412,7 @@ echo '
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -435,7 +429,7 @@ echo '
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 16</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 26</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 17</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -462,7 +456,7 @@ echo '
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                                        <a href="#"> 25</a>
                                     </div>
                                 </div>
 
@@ -482,7 +476,7 @@ echo '
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                                        <a href="#"> 25</a>
                                     </div>
                                 </div>
 
@@ -517,7 +511,7 @@ echo '
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -550,7 +544,7 @@ echo '
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -583,7 +577,7 @@ echo '
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -616,7 +610,7 @@ echo '
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -661,7 +655,7 @@ echo '
                                     <div class="post-meta d-flex">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 38</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -676,7 +670,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 29</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 08</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 23</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -691,7 +685,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 17</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 33</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 26</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -706,7 +700,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 11</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 21</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -816,7 +810,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -831,7 +825,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -846,7 +840,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -861,7 +855,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -876,7 +870,7 @@ echo '
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>

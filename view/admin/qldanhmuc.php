@@ -9,17 +9,6 @@ if (isset($_POST['submit'])) {
     
 
 }
-if (isset($_POST['update'])) {
-   
-    $tieude_Cat = $_POST['title'];
-    $TieuDeKhongDau = $_POST['link_seo'];
-    $cat = new Catalog();
-    $id = $_GET['id'];
-   
-   $cat->EditCat($tieude_Cat,$TieuDeKhongDau,$id);
-   
- 
- }
 ?>
   <div class="single-product-tab-area mg-tb-15">
             <!-- Single pro tab review Start-->
@@ -39,13 +28,11 @@ if (isset($_POST['update'])) {
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                     <?php 
                                       
-                                    if(isset($_GET['edit'])) {
-                                        $cat = new Catalog();
-                                      $id = $_GET['id'];
-                                      $dsdm =  $cat->getCateById($id);
+                                    if(isset($_GET['id']) && $_GET['atc'] == 'update_cate') {
+                                      
                                         extract($dsdm);
                                         ?>
-                                        <form action="" method="post" enctype="multipart/form-data">
+                                        <form action="?atc=dmUpcate" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="review-content-section">
@@ -59,7 +46,7 @@ if (isset($_POST['update'])) {
                                                         <input type="text" name="link_seo" value="<?php echo $dsdm['TenKhongDau'] ?>" class="form-control" placeholder="Tiêu đề danh mục không dấu">
                                                     </div>
                                                    
-                                                
+                                                    <input type="hidden" value="<?php echo $dsdm['idLoaiTin'] ?>"  name="id" class="form-control">
                                             </div>
                                             
                                         </div>
@@ -67,7 +54,7 @@ if (isset($_POST['update'])) {
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
-                                                    <button type="submit" name="update" class="btn btn-primary waves-effect waves-light m-r-10">Save
+                                                    <button type="submit"  class="btn btn-primary waves-effect waves-light m-r-10">Save
 														</button>
                                                     <button type="button" class="btn btn-warning waves-effect waves-light">Discard
 														</button>
@@ -150,7 +137,7 @@ if (isset($_POST['update'])) {
                                     
                                     
                                     <td>
-                                    <a href="?atc=qldanhmuc&id='.$dsdm['idLoaiTin'].'&edit"> <button data-toggle="tooltip" name="" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
+                                    <a href="?atc=update_cate&id='.$dsdm['idLoaiTin'].'"> <button data-toggle="tooltip" name="" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> </a>
                                        
                                     </td>
                                     <td>

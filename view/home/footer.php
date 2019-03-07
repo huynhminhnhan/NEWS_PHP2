@@ -67,7 +67,7 @@
                                 <div class="post-meta d-flex justify-content-between">
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 <div class="post-meta d-flex justify-content-between">
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                    
                                 </div>
                             </div>
                         </div>

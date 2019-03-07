@@ -71,14 +71,16 @@
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </div>
                             <!-- Top Search Area -->
+                        
+        
                             <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <form action="?atc=search" id="submit-form" method="post">
+                                    <input type="search" name="top-search" id="topSearch" placeholder="Search..." require>
+                                    <button type="submit"  class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
                             <!-- Login -->
-                            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <a href="?atc=login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

@@ -1,20 +1,14 @@
-<?php 
-include "header.php";
-$id = $_GET['idcate'];
-$cat = new Catalog();
-$nameCat = $cat->getCateById($id);
-extract($nameCat);
-
+<?php  include "header.php";
 ?>
-<div class="vizew-breadcrumb">
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="?home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#"><?php echo $nameCat['Ten']?></a></li>
-                            
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                           
                         </ol>
                     </nav>
                 </div>
@@ -23,70 +17,87 @@ extract($nameCat);
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Archive Grid Posts Area Start ##### -->
-    <div class="vizew-grid-posts-area mb-80">
+    <!-- ##### Archive List Posts Area Start ##### -->
+    <div class="vizew-archive-list-posts-area mb-80">
         <div class="container">
-            <div class="row justify-content-center">
+        <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <!-- Archive Catagory & View Options -->
                     <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
                         <!-- Catagory -->
                         <div class="archive-catagory">
-                           
-                            <h4><i class="fa fa-trophy" aria-hidden="true"></i> <?php echo $nameCat['Ten']?> </h4>
+                            <h4><i class="fa fa-music" aria-hidden="true"></i> <div class="col-md-12">
+                <h4><?php if ($search_page == null) {
+        
+        echo $note_false = "Không tìm thấy kết quả tìm kím phù hợp với từ khóa " ."'$search'";
+       
+      }
+      else {
+     //  print_r($search_page);
+       echo $note_true = "Kết quả tìm kím phù hợp với từ khóa "."'$search'";
+      }
+        ?></h4>
+                    
+                </div> </h4>
                         </div>
                         <!-- View Options -->
                         <div class="view-options">
-                            <a href="archive-grid.html" class="active"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                            <a href="archive-list.html"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+                            <a href="archive-grid.html"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                            <a href="archive-list.html" class="active"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
-                    <div class="row">
-                    <?php
-                    $archive = new news();
-                    $id = $_GET['idcate'];
-                    $inFor = $archive->getNewsArchive($id);
-                    foreach ($inFor as $kq) {
-                        extract($kq);
-                        $new_path = "../view/upload/".$kq['Hinh'];
-                                    if(is_file($new_path)){
-                                      $new_path=$new_path;
-                                    }else{
-                                      $new_path="no data";
-                                    }
-                        echo '<div class="col-12 col-md-6">
-                        <div class="single-post-area mb-50">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumbnail">
-                                <img src="'.$new_path.'" alt="">
 
-                                <!-- Video Duration -->
-                                <span class="video-duration">'.$kq['SoLuotXem'].'</span>
-                            </div>
+                    <!-- Single Post Area -->
+                    <?php 
 
-                            <!-- Post Content -->
-                            <div class="post-content">
-                               
-                                <a href="?atc=single-post&id='.$kq['id'].'" class="post-title">'.$kq['TieuDe'].'</a>
-                                <div class="post-meta d-flex">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                    
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
-                    }
-                    ?>
-                        <!-- Single Blog Post -->
-                       
+                    
+foreach ($search_page as $kq) {
+    
+   // extract($kq);
+    $new_path = "../view/upload/".$kq['Hinh'];
+    if(is_file($new_path)){
+      $new_path=$new_path;
+    }else{
+      $new_path="no data";
+    }
+    echo '<div class="single-post-area style-2">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+            <!-- Post Thumbnail -->
+            <div class="post-thumbnail">
+                <img src="'.$new_path.'" alt="">
 
-                        <!-- Single Blog Post -->
-                       
-                        <!-- Single Blog Post -->
-                        
-                    </div>
+                <!-- Video Duration -->
+                <span class="video-duration">05.03</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <!-- Post Content -->
+            <div class="post-content mt-0">
+                <a href="#" class="post-cata cata-sm cata-success">Sports</a>
+                <a href="single-post.html" class="post-title mb-2">'.$kq['TieuDe'].'</a>
+                <div class="post-meta d-flex align-items-center mb-2">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+                    <a href="#" class="post-date">'.$kq['date_created'].'</a>
+                </div>
+                <p class="mb-2">'.$kq['TomTat'].'</p>
+                <div class="post-meta d-flex">
+                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
+                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> ' .$kq['SoLuotXem'] .' </a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+';
+}
+?>
+
+                    <!-- Single Post Area -->
+                   
+                    
 
                     <!-- Pagination -->
                     <nav class="mt-50">
@@ -122,7 +133,7 @@ extract($nameCat);
                             <div class="single-post-area mb-30">
                                 <!-- Post Thumbnail -->
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/13.jpg" alt="">
+                                    <img src="img/bg-img/13.jpg" alt="">
 
                                     <!-- Video Duration -->
                                     <span class="video-duration">05.03</span>
@@ -143,7 +154,7 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/1.jpg" alt="">
+                                    <img src="img/bg-img/1.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
@@ -158,7 +169,7 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/2.jpg" alt="">
+                                    <img src="img/bg-img/2.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">Sweet Yummy Chocolatea Tea</a>
@@ -173,7 +184,7 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/35.jpg" alt="">
+                                    <img src="img/bg-img/35.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
@@ -188,7 +199,7 @@ extract($nameCat);
 
                         <!-- ***** Single Widget ***** -->
                         <div class="single-widget add-widget mb-50">
-                            <a href="#"><img src="assets/img/bg-img/add.png" alt=""></a>
+                            <a href="#"><img src="img/bg-img/add.png" alt=""></a>
                         </div>
 
                         <!-- ***** Sidebar Widget ***** -->
@@ -202,7 +213,7 @@ extract($nameCat);
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex align-items-center">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="assets/img/bg-img/25.jpg" alt="">
+                                    <img src="img/bg-img/25.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Music Channel</a>
@@ -213,7 +224,7 @@ extract($nameCat);
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex align-items-center">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="assets/img/bg-img/26.jpg" alt="">
+                                    <img src="img/bg-img/26.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Trending Channel</a>
@@ -224,7 +235,7 @@ extract($nameCat);
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex align-items-center">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="assets/img/bg-img/27.jpg" alt="">
+                                    <img src="img/bg-img/27.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Travel Channel</a>
@@ -235,7 +246,7 @@ extract($nameCat);
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex align-items-center">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="assets/img/bg-img/28.jpg" alt="">
+                                    <img src="img/bg-img/28.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">Sport Channel</a>
@@ -246,7 +257,7 @@ extract($nameCat);
                             <!-- Single YouTube Channel -->
                             <div class="single-youtube-channel d-flex align-items-center">
                                 <div class="youtube-channel-thumbnail">
-                                    <img src="assets/img/bg-img/29.jpg" alt="">
+                                    <img src="img/bg-img/29.jpg" alt="">
                                 </div>
                                 <div class="youtube-channel-content">
                                     <a href="single-post.html" class="channel-title">TV Show Channel</a>
@@ -283,14 +294,14 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/1.jpg" alt="">
+                                    <img src="img/bg-img/1.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -298,14 +309,14 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/2.jpg" alt="">
+                                    <img src="img/bg-img/2.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -313,14 +324,14 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/36.jpg" alt="">
+                                    <img src="img/bg-img/36.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">Sweet Yummy Chocolate in the</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -328,14 +339,14 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/37.jpg" alt="">
+                                    <img src="img/bg-img/37.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -343,14 +354,14 @@ extract($nameCat);
                             <!-- Single Blog Post -->
                             <div class="single-blog-post d-flex">
                                 <div class="post-thumbnail">
-                                    <img src="assets/img/bg-img/38.jpg" alt="">
+                                    <img src="img/bg-img/38.jpg" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
                                     <div class="post-meta d-flex justify-content-between">
                                         <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                        <a href="#"> 84</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -361,4 +372,5 @@ extract($nameCat);
             </div>
         </div>
     </div>
-    <?php include "footer.php" ?>
+    <!-- ##### Archive List Posts Area End ##### -->
+<?php  include "footer.php" ?>

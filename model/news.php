@@ -61,14 +61,14 @@ $result = $db->getList($query);
 // cap nhat so lan xem tin
 static function getSee(){
   $db = new connect();
-  $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE tintuc.SoLuotXem ORDER BY id DESC limit 3";
+  $query = "SELECT * FROM tintuc INNER JOIN loaitin ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE tintuc.SoLuotXem ORDER BY SoLuotXem DESC limit 3";
 $result = $db->getList($query);
 return $result;
 } 
 // lay bai viet xem nhieu nhat
 static function getNewsSpecialFirst($top){
   $db = new connect();
-  $query = "select * from tintuc where NoiBat = 1 ORDER BY id limit $top";
+  $query = "select * from tintuc where NoiBat = 1 ORDER BY id DESC limit $top";
 $result = $db->getList($query);
   return $result;
 }
@@ -80,7 +80,18 @@ static function getNewsArchive($id){
 $result = $db->getList($query);
   return $result;
 }
-
+static function getNewsNextPage($id){
+  $db = new connect();
+  $query = "select * from tintuc where id=$id +1 ORDER BY id DESC";
+$result = $db->getInstancse($query);
+  return $result;
+}
+static function getNewsPrevPage($id){
+  $db = new connect();
+  $query = "select * from tintuc where id=$id-1 ORDER BY id ASC";
+$result = $db->getInstancse($query);
+  return $result;
+}
 static function getNews($form,$to){
   $db = new connect();
   $query = "SELECT * FROM loaitin INNER JOIN tintuc ON (loaitin.idLoaiTin = tintuc.idLoaiTin)  where NoiBat = 0 ORDER BY id DESC limit $form,$to";
@@ -135,6 +146,15 @@ function deleteNews($id) {
   $query = "DELETE FROM tintuc WHERE id = $id";
   $db->execute($query);
 }
+
+function search($search) {
+  $db = new connect();
+  $query = "SELECT * FROM tintuc INNER JOIN loaitin ON (loaitin.idLoaiTin = tintuc.idloaitin) WHERE (TieuDe LIKE '%$search%') OR (SoLuotXem LIKE '%$search%') OR (Ten LIKE '%$search%') ";
+  $result = $db->getList($query);
+  
+    return $result;
+  }
+  
 
 }
 
